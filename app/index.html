@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice City Cover Studio — GTA 6-style cover art maker</title>
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <header>
+      <h1>Vice City <span>Cover Studio</span></h1>
+      <p>Your photos, made into GTA-style key art. Pick a layout, drop in photos, write the caption, export the PNG.</p>
+    </header>
+
+    <section class="group">
+      <h2>1 · Photos</h2>
+      <label class="upload">Upload your own photo
+        <input id="upload" type="file" accept="image/*">
+      </label>
+      <p class="hint">Click a sample to put it in the selected panel. Double-click to fill every panel with it, each cropped differently. Drag on the preview to move a photo, scroll to zoom.</p>
+      <div id="samples" class="samples"></div>
+      <div id="panels" class="panels"></div>
+      <label class="zoom-row">Zoom panel photo
+        <input id="zoom" type="range" min="1" max="4" step="0.05" value="1">
+      </label>
+    </section>
+
+    <section class="group">
+      <h2>2 · Layout</h2>
+      <div id="layouts" class="options"></div>
+    </section>
+
+    <section class="group">
+      <h2>3 · Look</h2>
+      <h3>Colour grade</h3>
+      <div id="grades" class="options"></div>
+      <h3>Title style</h3>
+      <div id="titles" class="options"></div>
+      <h3>Frame</h3>
+      <div id="frames" class="options"></div>
+    </section>
+
+    <section class="group">
+      <h2>4 · Words</h2>
+      <label>Title <input id="title" type="text" maxlength="28" value="VICE CITY"></label>
+      <label>Script subtitle <input id="subtitle" type="text" maxlength="40" value="a sun-soaked story"></label>
+      <label>Tagline ribbon <input id="tagline" type="text" maxlength="32" value="EVERY SUNSET HAS A PRICE"></label>
+      <label>Press quote <input id="quote" type="text" maxlength="48" value="A sun-soaked masterpiece"></label>
+      <label>Quote source <input id="quote-source" type="text" maxlength="32" value="VICE CITY GAZETTE"></label>
+      <label>Billing line 1 <input id="billing1" type="text" maxlength="60" value="VICE CITY COVER STUDIO PRESENTS A LEONIDA PRODUCTION"></label>
+      <label>Billing line 2 <input id="billing2" type="text" maxlength="60" value="SHOT ON LOCATION IN VICE CITY · NO CARS WERE HARMED · © 2026"></label>
+      <h3>Role tags (one per panel)</h3>
+      <div id="tags" class="tags"></div>
+    </section>
+
+    <section class="group">
+      <h2>5 · Poster furniture</h2>
+      <div id="furniture" class="furniture"></div>
+    </section>
+
+    <section class="group">
+      <h2>6 · Export</h2>
+      <div id="sizes" class="options"></div>
+      <button id="export" type="button" class="export">Export PNG 1920 × 1080</button>
+      <p id="status" role="status"></p>
+    </section>
+  </section>
+
+  <section class="stage" aria-label="Cover preview">
+    <canvas id="preview" width="960" height="540" aria-label="The cover preview"></canvas>
+    <p class="stage-hint">Click a panel to select it · drag to move its photo · scroll to zoom</p>
+  </section>
+</main>
+<script type="module" src="./src/app.js"></script>
+</body>
+</html>

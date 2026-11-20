@@ -1,0 +1,247 @@
+/* Vice City Cover Studio — editor styling. Dark neon Miami theme; the bundled
+   OFL fonts (Anton, Bebas Neue, Yellowtail) are loaded from fonts/ and are the
+   same faces the canvas title uses. */
+
+@font-face {
+  font-family: "Anton";
+  src: url("./fonts/anton.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("./fonts/bebas-neue.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Yellowtail";
+  src: url("./fonts/yellowtail.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
+:root {
+  --bg: #150a1e;
+  --panel: #1e1130;
+  --panel-2: #281640;
+  --line: #3d2458;
+  --text: #f5eefc;
+  --muted: #b9a3d0;
+  --accent: #ff2d95;
+  --accent-2: #00e5ff;
+  --gold: #ffd166;
+}
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+  font-size: 17px;
+  letter-spacing: 0.04em;
+  min-height: 100vh;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  height: 100vh;
+}
+
+.controls {
+  background: var(--panel);
+  border-right: 1px solid var(--line);
+  padding: 22px 20px 40px;
+  overflow-y: auto;
+}
+
+.controls header h1 {
+  font-family: "Anton", sans-serif;
+  font-size: 30px;
+  line-height: 1.05;
+  margin: 0 0 6px;
+  text-transform: uppercase;
+}
+.controls header h1 span {
+  display: block;
+  background: linear-gradient(90deg, #ff9a5c, #ff2d95, #7c4dff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.controls header p { color: var(--muted); margin: 0 0 18px; line-height: 1.35; }
+
+.group { border-top: 1px solid var(--line); padding: 16px 0; }
+.group h2 {
+  font-family: "Anton", sans-serif;
+  font-size: 17px;
+  letter-spacing: 0.08em;
+  margin: 0 0 12px;
+  color: var(--gold);
+}
+.group h3 { font-size: 15px; margin: 14px 0 8px; color: var(--muted); font-weight: normal; }
+
+label { display: block; margin-bottom: 10px; color: var(--muted); font-size: 15px; }
+label input[type="text"] {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px 10px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 17px;
+  letter-spacing: 0.04em;
+}
+label input[type="text"]:focus { outline: 2px solid var(--accent-2); border-color: transparent; }
+
+.upload {
+  display: block;
+  text-align: center;
+  padding: 12px;
+  border: 2px dashed var(--line);
+  border-radius: 8px;
+  color: var(--text);
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+.upload:hover { border-color: var(--accent-2); }
+.upload input { display: none; }
+
+.hint { color: var(--muted); font-size: 14px; line-height: 1.4; margin: 0 0 10px; }
+
+.samples {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.sample {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0 0 4px;
+  cursor: pointer;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 12px;
+  overflow: hidden;
+}
+.sample:hover { border-color: var(--accent); }
+.sample img { display: block; width: 100%; height: 52px; object-fit: cover; }
+.sample span { display: block; padding: 3px 2px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.panels { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.panel-slot {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+.panel-slot.selected { background: var(--accent); border-color: var(--accent); }
+
+.zoom-row input[type="range"] { display: block; width: 100%; accent-color: var(--accent); }
+
+.options { display: flex; flex-wrap: wrap; gap: 6px; }
+.option {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  padding: 7px 12px;
+  cursor: pointer;
+}
+.option:hover { border-color: var(--accent-2); }
+.option.active { background: var(--accent); border-color: var(--accent); }
+
+.tags { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.tags input {
+  width: 100%;
+  padding: 7px 9px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.furniture { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; }
+.toggle { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; cursor: pointer; color: var(--text); }
+.toggle input { accent-color: var(--accent); width: 16px; height: 16px; }
+
+.export {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  background: linear-gradient(90deg, #ff2d95, #7c4dff);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-family: "Anton", sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+.export:hover { filter: brightness(1.12); }
+
+#status { color: var(--gold); min-height: 1.3em; margin: 10px 0 0; font-size: 15px; }
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  gap: 12px;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(124, 77, 255, 0.25), transparent 60%),
+    radial-gradient(ellipse at 50% 100%, rgba(255, 45, 149, 0.18), transparent 60%),
+    var(--bg);
+}
+#preview {
+  max-width: 100%;
+  max-height: calc(100vh - 110px);
+  width: auto;
+  height: auto;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--line);
+  cursor: grab;
+  touch-action: none;
+}
+#preview:active { cursor: grabbing; }
+.stage-hint { color: var(--muted); margin: 0; font-size: 15px; }
+
+/* Screenshot scenes: the cover alone fills the page; the editor keeps its chrome. */
+body.shot-cover { background: #12081f; }
+body.shot-cover .controls,
+body.shot-cover .stage-hint { display: none; }
+body.shot-cover .app { display: block; }
+body.shot-cover .stage { padding: 0; min-height: 100vh; background: #12081f; }
+body.shot-cover #preview {
+  max-width: 100vw;
+  max-height: 100vh;
+  box-shadow: none;
+}
+
+@media (max-width: 900px) {
+  .app { grid-template-columns: 1fr; height: auto; }
+  .controls { border-right: none; border-bottom: 1px solid var(--line); overflow-y: visible; }
+  .stage { padding: 16px; }
+}
